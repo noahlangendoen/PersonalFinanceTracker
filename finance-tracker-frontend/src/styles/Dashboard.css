@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.dashboard-container {
+  @apply min-h-screen flex bg-white;
+}
+
+.dashboard-sidebar {
+  @apply w-64 bg-blue-600 text-white flex flex-col p-6 space-y-6;
+  background: linear-gradient(270deg, #3b82f6, #2563eb, #3b82f6);
+  background-size: 600% 600%;
+  animation: gradient-move 20s ease infinite;
+}
+
+.dashboard-title {
+  @apply text-2xl font-bold mb-6 text-center;
+}
+
+.dashboard-nav button {
+  @apply w-full text-left px-4 py-3 rounded-lg transition duration-300 font-semibold hover:bg-blue-500;
+}
+
+.dashboard-main {
+  @apply flex-1 p-8 bg-gradient-to-b from-blue-50 to-white;
+}
+
+.dashboard-header {
+  @apply flex justify-between items-center mb-8;
+}
+
+.dashboard-header h1 {
+  @apply text-3xl font-bold text-blue-600;
+}
+
+.logout-button {
+  @apply bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold transition duration-300;
+}
+
+.dashboard-transactions h2 {
+  @apply text-xl font-semibold text-blue-700 mb-4;
+}
+
+.dashboard-transactions ul {
+  @apply space-y-3;
+}
+
+.dashboard-transactions li {
+  @apply flex justify-between bg-white rounded-lg p-4 shadow-md border border-blue-100;
+}
+
+.dashboard-transactions li span {
+  @apply text-blue-700;
+}
+
+.dashboard-transactions p {
+  @apply text-blue-400 italic;
+}
