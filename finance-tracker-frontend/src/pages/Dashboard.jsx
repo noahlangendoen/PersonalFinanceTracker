@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchTransactions = async () => {
@@ -35,8 +37,9 @@ const Dashboard = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        window.location.href = '/';
+        navigate('/login');
     }
+
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
@@ -47,7 +50,7 @@ const Dashboard = () => {
                 <h2 className="dashboard-title">Dashboard</h2>
                 <nav className="dashboard-nav">
                     <button>Dashboard</button>
-                    <button>Transactions</button>
+                    <button onClick={() => navigate('/transactions')}>Transactions</button>
                     <button>Budgets</button>
                     <button>Reports</button>
                     <button>Settings</button>
@@ -57,7 +60,12 @@ const Dashboard = () => {
             <main className="dashboard-main">
                 <div className="dashboard-header">
                     <h1>Finance Tracker</h1>
-                    <button className="logout-button" onclick={handleLogout}>Logout</button>
+                    <button
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg font-medium transition duration-300"
+                    onClick={handleLogout}
+                    >
+                    Logout
+                    </button>
                 </div>
 
                 <div className="dashboard-transactions">
